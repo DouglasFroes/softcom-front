@@ -26,6 +26,10 @@ export const Body = styled.div`
   h2 {
     margin-bottom: 2rem;
   }
+  @media (max-width: 440px) {
+    width: 95%;
+    padding: 1.2rem;
+  }
 `
 export const Form = styled.div`
   display: flex;
@@ -52,6 +56,12 @@ export const Form = styled.div`
     }
     ::placeholder {
       color: var(--var-color-4);
+    }
+    @media (max-width: 360px) {
+      width: 80vw;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      margin: 10px 0;
     }
   }
 `

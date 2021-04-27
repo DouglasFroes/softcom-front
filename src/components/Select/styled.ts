@@ -25,4 +25,10 @@ export const Select = styled.select`
     font-weight: 700;
     outline: none;
   }
+
+  @media (max-width: 440px) {
+    width: 80vw;
+    margin: 10px 0;
+    font-size: 0.9rem;
+  }
 `
