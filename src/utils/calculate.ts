@@ -1,5 +1,5 @@
 function stringAdd(item: string) {
-  var result = parseFloat(
+  const result = parseFloat(
     item
       .substring(0, item.length - 2)
       .concat('.')

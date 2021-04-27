@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { ChangeEvent, useRef, useState } from 'react'
 import Select from '../components/Select'
 import Head from 'next/head'
 
 import { faleMais, ddd } from '../../data.json'
 
-import * as Styled from './styled.module'
-import { calculateCallValue } from '../utils/ calculate'
+import * as Styled from './indexStyled.module'
+import { calculateCallValue } from '../utils/calculate'
 import { validateMinute, validateSelect } from '../utils/validate'
+import Button from '../components/Button'
 
 interface propsCall {
   withPlan?: string
@@ -16,6 +17,7 @@ interface propsCall {
 export default function Home() {
   const [destiny, setDestiny] = useState([])
   const [callValue, setCallValue] = useState<propsCall>({})
+  const [minute, setMinute] = useState('')
 
   const refPlan = useRef<HTMLSelectElement>(null)
   const refDDD = useRef<HTMLSelectElement>(null)
@@ -24,6 +26,10 @@ export default function Home() {
 
   const alterDDD = (obj: any[]) => {
     setDestiny(obj)
+  }
+
+  function handlerChange(e: ChangeEvent<HTMLInputElement>) {
+    setMinute(e.target.value.replace(/[^\d\s-/]/g, ''))
   }
 
   const handleCall = () => {
@@ -39,9 +45,9 @@ export default function Home() {
 
     const plan = parseInt(refPlan.current.value)
     const DestinyValue = parseInt(refDestiny.current.value)
-    const minute = parseInt(refMinute.current.value)
+    const minuteInt = parseInt(minute)
 
-    const result = calculateCallValue(plan, DestinyValue, minute)
+    const result = calculateCallValue(plan, DestinyValue, minuteInt)
 
     setCallValue(result)
   }
@@ -66,7 +72,7 @@ export default function Home() {
             placeholder="Selecione O DDD De Origem"
             data={ddd}
             ref={refDDD}
-            callback={alterDDD}
+            selectValue={alterDDD}
           />
           <Select
             placeholder="Selecione O DDD De Destino"
@@ -77,8 +83,10 @@ export default function Home() {
             placeholder="Tempo Da Ligação Em Minutos"
             ref={refMinute}
             onBlur={() => validateMinute(refMinute.current)}
+            value={minute}
+            onChange={handlerChange}
           />
-          <button onClick={handleCall}>Calcular</button>
+          <Button onClick={handleCall} label="Calcular" />
         </Styled.Form>
         {callValue?.withoutPlan && (
           <Styled.Result>

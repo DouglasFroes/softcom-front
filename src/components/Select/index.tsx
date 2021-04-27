@@ -11,19 +11,21 @@ interface obj {
 interface propsSelect {
   placeholder: string
   data: obj[]
-  callback?: (item: []) => void
+  selectValue?: (item: any[]) => void
 }
 
 function Select(props: propsSelect, ref: any) {
-  const { placeholder, data, callback } = props
+  const { placeholder, data, selectValue } = props
   return (
     <Styled.Select
       ref={ref}
       onChange={() => {
-        if (!callback) return
-        callback(data[ref?.current?.value - 1]?.destiny as [])
+        if (selectValue) {
+          selectValue(data[parseInt(ref?.current?.value) - 1]?.destiny)
+        }
       }}
       defaultValue={placeholder}
+      aria-label="select-01"
     >
       <option value={placeholder} disabled>
         {placeholder}

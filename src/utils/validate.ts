@@ -7,13 +7,13 @@ function styleColor(valid: boolean, style: CSSStyleDeclaration) {
 }
 
 export function validateMinute(minute: HTMLInputElement) {
-  const boolean = minute?.value?.length > 0 ? true : false
+  const boolean = minute?.value?.length > 0
   styleColor(boolean, minute.style)
   return boolean
 }
 
 export function validateSelect(select: HTMLSelectElement) {
-  const boolean = parseInt(select?.value) > 0 ? true : false
+  const boolean = parseInt(select?.value) > 0
   styleColor(boolean, select.style)
   return boolean
 }

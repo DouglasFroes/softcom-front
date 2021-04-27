@@ -32,8 +32,7 @@ export const Form = styled.div`
   flex-wrap: wrap;
   margin: -10px;
 
-  input,
-  button {
+  input {
     margin-top: 1rem;
     margin: 10px;
     padding: 0.5rem 1rem;
@@ -51,21 +50,8 @@ export const Form = styled.div`
       font-weight: 700;
       outline: none;
     }
-  }
-  input {
     ::placeholder {
       color: var(--var-color-4);
-    }
-  }
-  button {
-    flex: 1 0.8 5rem;
-    background: var(--var-color-3);
-    color: var(--var-color-1);
-    border-color: var(--var-color-4);
-    font-weight: 800;
-    &:focus,
-    &:hover {
-      filter: brightness(0.75);
     }
   }
 `
