@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #f5f5f5;
+  --var-color-1: #393e46;
+  --var-color-1-2: rgba(57, 62, 70, 0.6);
+  --var-color-2: #00adb5;
+  --var-color-3: #aad8d3;
+  --var-color-4: #eeeeee;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+body {
+  background: var(--var-color-1);
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font: 500 1rem Lato, Roboto, sans-serif;
+  color: var(--var-color-4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lato, Roboto, sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+}
