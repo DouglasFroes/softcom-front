@@ -1,21 +1,22 @@
-import React, { ChangeEvent, useRef, useState } from 'react'
-import Select from '../components/Select'
+import React from 'react'
 import Head from 'next/head'
 
-import { faleMais, ddd } from '../../data.json'
-
+import Claps from '../components/Claps'
 import * as Styled from './indexStyled.module'
-import { calculateCallValue } from '../utils/calculate'
-import { validateMinute, validateSelect } from '../utils/validate'
-import Button from '../components/Button'
 
 export default function Home() {
   return (
     <Styled.Container>
       <Head>
-        <title>softcom</title>
+        <title>Softcom</title>
       </Head>
-      <Styled.Body></Styled.Body>
+      <Styled.Body>
+        <div className="teste">
+          <p>Branding</p>
+          <p>Corporate Culture</p>
+        </div>
+        <Claps />
+      </Styled.Body>
     </Styled.Container>
   )
 }

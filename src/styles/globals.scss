@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--var-color-1);
 }
 
 :root {
@@ -39,14 +40,6 @@ h4,
 h5,
 h6 {
   font-family: Lato, Roboto, sans-serif;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.5rem;
 }
 
 button {
