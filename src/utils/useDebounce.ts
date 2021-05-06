@@ -1,14 +1,12 @@
-import { useRef } from 'react'
+export default function useDebounce(fn) {
+  let timeout = false
 
-export default function useDebounce(fn, delay) {
-  const timeoutRef = useRef(null)
+  async function debouche(...arg) {
+    if (timeout) return
 
-  function debouche(...arg) {
-    clearTimeout(timeoutRef.current)
-
-    timeoutRef.current = setTimeout(() => {
-      fn(...arg)
-    }, delay)
+    timeout = true
+    await fn(...arg)
+    timeout = false
   }
 
   return debouche

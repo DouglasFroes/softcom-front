@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import useDebounce from '../../utils/useDebounce'
 import * as Styled from './styled'
 
 interface propsButton {
@@ -37,6 +38,7 @@ export default function Button(props: propsButton) {
     imgRef.current.className = ''
     textRef.current.style.display = 'none'
   }
+  const ola = React.useCallback(useDebounce(initAnimation), [])
 
   return (
     <Styled.Container>
@@ -46,7 +48,7 @@ export default function Button(props: propsButton) {
         </div>
       </div>
       <div>
-        <div className="animation" onClick={initAnimation}>
+        <div className="animation" onClick={ola}>
           <img src="/claps.svg" ref={imgRef} />
         </div>
         <p className="clapsText" ref={textRef}>
