@@ -27,13 +27,22 @@ export const Body = styled.div`
     display: flex;
     /* padding: 0 3rem; */
     margin-top: 20vh;
+    p {
+      font-size: 1.8rem;
+      margin-left: 4.5rem;
+    }
   }
-  p {
-    font-size: 1.8rem;
-    margin-left: 4.5rem;
-  }
-  @media (max-width: 440px) {
-    width: 95%;
-    padding: 1.2rem;
+
+  @media (max-width: 477px) {
+    width: 100%;
+    padding: 0 0.2rem;
+    .teste {
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      p {
+        font-size: 1.2rem;
+        margin-left: 0;
+      }
+    }
   }
 `

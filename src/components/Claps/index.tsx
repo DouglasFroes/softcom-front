@@ -1,34 +1,49 @@
 import React, { useRef, useState } from 'react'
+import clapsApi from '../../services/claps'
 import useDebounce from '../../utils/useDebounce'
 import * as Styled from './styled'
 
 interface propsButton {
-  onClick?: () => void
+  userId: string
+  articleId: string
 }
 
 export default function Button(props: propsButton) {
-  const { onClick } = props
+  const { userId, articleId } = props
+
   const [count, setCount] = useState(1)
   const countRef = useRef<HTMLDivElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const textRef = useRef<HTMLParagraphElement>(null)
 
   async function initAnimation() {
+    if (count === 50) {
+      return
+    }
+    setCount(1)
+    // eslint-disable-next-line promise/param-names
     const sleep = m => new Promise(r => setTimeout(r, m))
 
     imgRef.current.className = 'imgBorder imgAnimation1'
 
-    await sleep(1000)
+    const countApi = await clapsApi(userId, articleId)
+    await sleep(500)
+
+    if (countApi === 0) {
+      imgRef.current.className = ''
+      return
+    }
 
     countRef.current.className = 'numberAnimations'
     imgRef.current.className = 'imgBorder imgAnimation2'
 
     let i = 0
 
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < countApi; i++) {
       await sleep(150)
       setCount(i + 1)
     }
+
     imgRef.current.className = 'imgBorder'
     countRef.current.className = 'exitAnimations'
     await sleep(1000)
@@ -38,19 +53,20 @@ export default function Button(props: propsButton) {
     imgRef.current.className = ''
     textRef.current.style.display = 'none'
   }
-  const ola = React.useCallback(useDebounce(initAnimation), [])
+
+  const onClickClaps = React.useCallback(useDebounce(initAnimation), [])
 
   return (
     <Styled.Container>
-      <div className="count">
+      <Styled.CountNumberRender>
         <div className="hidden" ref={countRef}>
           <p>+{count}</p>
         </div>
-      </div>
+      </Styled.CountNumberRender>
       <div>
-        <div className="animation" onClick={ola}>
+        <Styled.ImageRender onClick={onClickClaps}>
           <img src="/claps.svg" ref={imgRef} />
-        </div>
+        </Styled.ImageRender>
         <p className="clapsText" ref={textRef}>
           {count} claps
         </p>

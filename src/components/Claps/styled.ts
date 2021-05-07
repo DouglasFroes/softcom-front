@@ -9,38 +9,51 @@ export const Container = styled.div`
 
   div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     height: 10rem;
   }
 
-  .count {
-    height: 10rem;
-    width: 12rem;
+  .clapsText {
+    margin-left: 2rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #000;
+    display: none;
+  }
+
+  @media (max-width: 477px) {
+    margin-left: 0;
+  }
+`
+
+export const CountNumberRender = styled.div`
+  height: 10rem;
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-top: -18rem;
+
+  div {
+    height: 5rem;
+    width: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    margin-top: -18rem;
+    border-radius: 3rem;
+    background: rgba(0, 0, 0, 0.8);
+  }
 
-    div {
-      height: 5rem;
-      width: 5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 3rem;
-      background: rgba(0, 0, 0, 0.8);
-    }
+  p {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+  }
 
-    p {
-      color: #fff;
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    .hidden {
-      display: none;
-    }
+  .hidden {
+    display: none;
   }
 
   .numberAnimations {
@@ -54,22 +67,50 @@ export const Container = styled.div`
     animation-iteration-count: 1;
   }
 
-  .animation {
-    height: 10rem;
-    width: 12rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  @keyframes countAnimation {
+    0% {
+      height: 5.2rem;
+      width: 5.2rem;
+    }
+    50% {
+      height: 5rem;
+      width: 5rem;
+    }
+    100% {
+      height: 5.2rem;
+      width: 5.2rem;
+    }
   }
+
+  @keyframes hiddenAnimation {
+    0% {
+      margin-top: 0;
+      opacity: 1;
+    }
+    100% {
+      margin-top: -15rem;
+      opacity: 0;
+      display: none !important;
+    }
+  }
+`
+
+export const ImageRender = styled.div`
+  height: 10rem;
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   img {
     width: 5rem;
   }
-  .clapsText {
-    margin-left: 2rem;
-    font-size: 2rem;
-    line-height: 3rem;
-    color: #000;
-    display: none;
+
+  .imgBorder {
+    border: 2px solid #393e46;
+    border-radius: 10rem;
+    width: 9rem;
+    padding: 1rem;
   }
 
   .imgAnimation1 {
@@ -83,13 +124,6 @@ export const Container = styled.div`
     animation-name: imgAnimation;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-  }
-
-  .imgBorder {
-    border: 2px solid #393e46;
-    border-radius: 10rem;
-    width: 9rem;
-    padding: 1rem;
   }
 
   @keyframes imgAnimation {
@@ -118,33 +152,6 @@ export const Container = styled.div`
       border-radius: 10rem;
       padding: 1rem;
       width: 7rem;
-    }
-  }
-
-  @keyframes countAnimation {
-    0% {
-      height: 5.2rem;
-      width: 5.2rem;
-    }
-    50% {
-      height: 5rem;
-      width: 5rem;
-    }
-    100% {
-      height: 5.2rem;
-      width: 5.2rem;
-    }
-  }
-
-  @keyframes hiddenAnimation {
-    0% {
-      margin-top: 0;
-      opacity: 1;
-    }
-    100% {
-      margin-top: -15rem;
-      opacity: 0;
-      display: none !important;
     }
   }
 `
